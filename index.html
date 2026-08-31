@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #f5f7fb;
+    }
+
+    /* Navbar */
+    nav {
+      background: #111827;
+      color: white;
+      padding: 15px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav h2 {
+      color: #60a5fa;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #60a5fa;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: #2563eb;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 5px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      background: #111827;
+    }
+
+    /* Sections */
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      color: #111827;
+    }
+
+    /* About */
+    .about {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      color: #4b5563;
+      font-size: 1.05rem;
+    }
+
+    /* Skills */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .skill {
+      background: white;
+      padding: 25px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+      color: #2563eb;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .project {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .project h3 {
+      color: #2563eb;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #6b7280;
+      margin-bottom: 15px;
+    }
+
+    .project a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Education */
+    .education {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .education-card {
+      background: white;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-left: 5px solid #2563eb;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .education-card h3 {
+      color: #111827;
+    }
+
+    .education-card p {
+      color: #6b7280;
+    }
+
+    /* Contact */
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #111827;
+      color: white;
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <h2>Alex.</h2>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div>
+      <h1>Hello, I'm <span>Alex Sharma</span></h1>
+      <p>Computer Science Student & Aspiring Web Developer</p>
+
+      <a href="#projects" class="btn">View My Projects</a>
+      <a href="#contact" class="btn secondary">Contact Me</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about">
+      <p>
+        I am a passionate computer science student interested in web development,
+        programming, and technology. I enjoy creating simple, useful, and
+        user-friendly applications while continuously learning new technologies.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="section-title">My Skills</h2>
+
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">Python</div>
+      <div class="skill">Java</div>
+      <div class="skill">Git & GitHub</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2 class="section-title">My Projects</h2>
+
+    <div class="projects">
+
+      <div class="project">
+        <h3>Student Management System</h3>
+        <p>
+          A web application for managing student records, courses,
+          and academic information.
+        </p>
+        <a href="#">View Project →</a>
+      </div>
+
+      <div class="project">
+        <h3>Weather App</h3>
+        <p>
+          A responsive weather application that displays current weather
+          information using an API.
+        </p>
+        <a href="#">View Project →</a>
+      </div>
+
+      <div class="project">
+        <h3>Personal Blog</h3>
+        <p>
+          A clean blog website where I share programming tutorials,
+          learning experiences, and technology articles.
+        </p>
+        <a href="#">View Project →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2 class="section-title">Education</h2>
+
+    <div class="education">
+
+      <div class="education-card">
+        <h3>Bachelor of Technology - Computer Science</h3>
+        <p>ABC University | 2024 - 2028</p>
+        <p>CGPA: 8.5 / 10</p>
+      </div>
+
+      <div class="education-card">
+        <h3>Higher Secondary School</h3>
+        <p>XYZ School | 2022 - 2024</p>
+        <p>Percentage: 88%</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+
+    <form class="contact-form"
+          onsubmit="sendMessage(event)">
+
+      <input type="text"
+             id="name"
+             placeholder="Your Name"
+             required>
+
+      <input type="email"
+             id="email"
+             placeholder="Your Email"
+             required>
+
+      <textarea id="message"
+                placeholder="Your Message"
+                required></textarea>
+
+      <button type="submit" class="btn">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Alex Sharma. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function sendMessage(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+
+      alert("Thank you, " + name + "! Your message has been received.");
+
+      event.target.reset();
+    }
+  </script>
+
+</body>
+</html>
